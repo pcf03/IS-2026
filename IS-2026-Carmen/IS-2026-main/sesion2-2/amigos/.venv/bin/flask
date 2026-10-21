@@ -1,0 +1,6 @@
+#!/home/uo287992/IS-2026/IS-2026-Carmen/IS-2026-main/sesion2-2/amigos/.venv/bin/python
+import sys
+from flask.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())
