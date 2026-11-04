@@ -14,14 +14,27 @@
       <th>Nombre</th>
       <th>Latitud</th>
       <th>Longitud</th>
+      <th>Acciones</th>
     </tr>
     {% for amigo in amigos %}
     <tr>
       <td>{{amigo.name}}</td>
       <td>{{amigo.lati}}</td>
       <td>{{amigo.longi}}</td>
+      <td>
+        <a href="{{ url_for('html.modificar_amigo', id=amigo.id) }}">Modificar</a> |
+        <a href="{{ url_for('html.borrar_amigo', id=amigo.id) }}">Borrar</a>
+      </td>
     </tr>
     {% endfor %}
   </table>
+  
+  <h2>Añadir amigo</h2>
+  <form action="{{ url_for('html.tabla_amigos') }}" method="POST">
+    Nombre: <input type="text" name="name" required>
+    Latitud: <input type="text" name="lati" required>
+    Longitud: <input type="text" name="longi" required>
+    <button type="submit">Añadir</button>
+  </form>
 </body>
 </html>
