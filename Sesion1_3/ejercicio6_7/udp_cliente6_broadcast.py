@@ -1,4 +1,5 @@
 import socket
+import sys
 
 # Creamos el socket UDP
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -11,7 +12,8 @@ s.settimeout(2.0)
 
 # La IP especial '<broadcast>' envía el paquete a TODOS los equipos conectados
 print("Buscando servidores en la red...")
-s.sendto(b"BUSCANDO HOLA", ("<broadcast>", 12345))
+ip_broadcast = sys.argv[1]
+s.sendto(b"BUSCANDO HOLA", (ip_broadcast, 12345))
 
 servidor_encontrado = None
 
