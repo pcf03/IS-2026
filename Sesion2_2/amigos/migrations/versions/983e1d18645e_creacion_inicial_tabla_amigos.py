@@ -1,8 +1,8 @@
-"""empty message
+"""Creacion inicial tabla amigos
 
-Revision ID: a2b372c8e69c
+Revision ID: 983e1d18645e
 Revises: 
-Create Date: 2026-11-04 17:42:15.984041
+Create Date: 2026-11-15 09:21:37.016645
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a2b372c8e69c'
+revision = '983e1d18645e'
 down_revision = None
 branch_labels = None
 depends_on = None

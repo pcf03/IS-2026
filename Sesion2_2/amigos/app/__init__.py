@@ -18,8 +18,9 @@ def create_app(config_name):
     
     # Blueprint para la API
     from .api import api as api_blueprint
-    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
+    app.register_blueprint(api_blueprint, url_prefix='/api')
     
-    return app
-
+    # Importante para que Flask-Migrate reconozca el modelo
+    from app import models
+    
     return app
