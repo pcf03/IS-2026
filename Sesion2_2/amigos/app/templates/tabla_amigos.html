@@ -15,12 +15,14 @@
       <th>Latitud</th>
       <th>Longitud</th>
       <th>Acciones</th>
+      <th>Dispositivos</th>
     </tr>
     {% for amigo in amigos %}
     <tr>
       <td>{{amigo.name}}</td>
       <td>{{amigo.lati}}</td>
       <td>{{amigo.longi}}</td>
+      <td>{{amigo.device}}</td>
       <td>
         <a href="{{ url_for('html.modificar_amigo', id=amigo.id) }}">Modificar</a> |
         <a href="{{ url_for('html.borrar_amigo', id=amigo.id) }}">Borrar</a>

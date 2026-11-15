@@ -9,6 +9,7 @@
     Nombre: <input type="text" name="name" value="{{ amigo.name }}" required><br><br>
     Latitud: <input type="text" name="lati" value="{{ amigo.lati }}" required><br><br>
     Longitud: <input type="text" name="longi" value="{{ amigo.longi }}" required><br><br>
+    Dispositivo: <input type="text" name="device" value="{{ amigo.device or '' }}"><br><br>
     <button type="submit">Guardar cambios</button>
   </form>
   <br>

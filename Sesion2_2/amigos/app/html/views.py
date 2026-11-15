@@ -35,6 +35,7 @@ def modificar_amigo(id):
         amigo.name = request.form["name"]
         amigo.lati = request.form["lati"]
         amigo.longi = request.form["longi"]
+        amigo.device = request.form.get("device","")
         db.session.commit()
         return redirect(url_for("html.tabla_amigos"))
         
