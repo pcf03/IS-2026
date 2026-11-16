@@ -3,6 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import app_config
 
+# Importaciones para Prometheus (Sección 7)
+from prometheus_client import make_wsgi_app
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+
 db = SQLAlchemy()
 
 def create_app(config_name):
@@ -20,11 +24,17 @@ def create_app(config_name):
     from .api import api as api_blueprint
     app.register_blueprint(api_blueprint, url_prefix='/api')
     
-    # Blueprint para Health Check (ESTO ES LO QUE FALTABA)
+    # Blueprint para Health Check
     from .health import health as health_blueprint
     app.register_blueprint(health_blueprint)
     
     # Importante para que Flask-Migrate reconozca el modelo
     from app import models
+    
+    # Añado el middleware de Prometheus
+    # Esto envuelve la aplicación original y abre la ruta secreta /metrics
+    app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
+        '/metrics': make_wsgi_app()
+    })
     
     return app
