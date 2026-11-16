@@ -20,6 +20,10 @@ def create_app(config_name):
     from .api import api as api_blueprint
     app.register_blueprint(api_blueprint, url_prefix='/api')
     
+    # Blueprint para Health Check (ESTO ES LO QUE FALTABA)
+    from .health import health as health_blueprint
+    app.register_blueprint(health_blueprint)
+    
     # Importante para que Flask-Migrate reconozca el modelo
     from app import models
     

@@ -23,4 +23,7 @@ def create_app(config_name):
     # Importante para que Flask-Migrate reconozca el modelo
     from app import models
     
+    from .health import health as health_blueprint
+    app.register_blueprint(health_blueprint)
+
     return app
