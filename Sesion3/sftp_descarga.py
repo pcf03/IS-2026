@@ -17,7 +17,7 @@ client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 client.connect(host, username=user, password=password)
 
-# Abrir canal SFTP[cite: 29]
+# Abrir canal SFTP
 sftp = client.open_sftp()
 
 print(f"\n--- Descargando archivos de '{carpeta_remota}' ---")
@@ -26,16 +26,16 @@ try:
         ruta_remota = os.path.join(carpeta_remota, nombre).replace("\\", "/")
         
         try:
-            # Obtener atributos del fichero remoto[cite: 30]
+            # Obtener atributos del fichero remoto
             attr = sftp.stat(ruta_remota)
             
-            # Comprobar si es un directorio usando S_ISDIR[cite: 30]
+            # Comprobar si es un directorio usando S_ISDIR
             if S_ISDIR(attr.st_mode):
                 print(f"[Omitido] '{nombre}' es un directorio.")
             else:
                 ruta_local = os.path.join(carpeta_local, nombre)
                 print(f"Descargando archivo regular: '{nombre}'...")
-                # Descargar fichero remoto al equipo local[cite: 29]
+                # Descargar fichero remoto al equipo local
                 sftp.get(ruta_remota, ruta_local)
                 
         except Exception as e:

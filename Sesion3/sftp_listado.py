@@ -14,7 +14,7 @@ client.connect(host, username=user, password=password)
 sftp = client.open_sftp()
 
 print("\n--- Listado de la carpeta home remota ---")
-# 3. Listar contenidos de la carpeta por defecto del usuario[cite: 29]
+# 3. Listar contenidos de la carpeta por defecto del usuario
 listado = sftp.listdir()
 for nombre in listado:
     print(nombre)
