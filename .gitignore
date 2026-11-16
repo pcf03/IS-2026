@@ -1,2 +1,3 @@
 basedatos/
-echo "descargas_sftp/*" >> .gitignore
+descargas_sftp/*
+prueba-copia.txt
