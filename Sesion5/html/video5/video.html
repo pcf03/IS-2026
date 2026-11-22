@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Vídeo HTML5</title>
 </head>
+
 <body>
   <!-- controls: muestra play, pausa, volumen... del propio navegador -->
   <!-- src: URL del fichero. El navegador lo pide por HTTP al servidor -->
-  <video src="big_buck_bunny.mp4" controls></video>
+  <!-- width/height: el tamaño real del vídeo -->
+  <video width="640" height="360" controls>
+    <!-- El navegador prueba de arriba abajo y se queda con la primera que entiende -->
+    <source src="VideosHTML5/big_buck_bunny.ogv" type="video/ogg; codecs=theora,vorbis">
+    <source src="VideosHTML5/big_buck_bunny.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2">
+    <source src="VideosHTML5/big_buck_bunny.webm" type="video/webm; codecs=vp8,vorbis">
+    <!-- Mensaje por si el navegador no entiende <video> -->
+    <p>No se puede reproducir el vídeo.</p>
+  </video>
 </body>
 </html>
