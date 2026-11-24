@@ -7,3 +7,6 @@ html/video5/VideosHTML5/*
 wowza/content/*.mp4
 wowza/content/*.zip
 wowza/content/*/
+
+# Ficheros de claves de Wowza
+wowza/conf/*.password
