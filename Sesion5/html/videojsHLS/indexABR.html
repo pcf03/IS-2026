@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <title>Apple HLS con Video.js</title>
-  <!-- Estilos de Video.js desde el CDN (versión del PDF) -->
-  <link href="https://vjs.zencdn.net/7.1.0/video-js.css" rel="stylesheet">
+  <title>HLS con ABR con Video.js</title>
+  <!-- Estilos de Video.js desde el CDN -->
+  <link href="https://vjs.zencdn.net/7.21.0/video-js.css" rel="stylesheet">
 </head>
-
 <body>
-  <h1>HLS con Video.js</h1>
+  <h1>HLS con ABR con Video.js</h1>
 
-  <!-- id="my-video": con él identificamos este elemento desde JS -->
   <video id="my-video" class="video-js" controls preload="auto" width="640" height="264">
-    <!-- src: la URL HLS de Wowza. Usa la IP de tu VM, NO la del contenedor -->
-    <!-- type="application/x-mpegURL": avisa de que es una lista HLS, no un mp4 -->
-    <source src="http://192.168.1.14:1935/abr/smil:conejo.smil/playlist.m3u8" type="application/x-mpegURL">
+    <!-- Ahora el recurso es el SMIL de la app "abr": Wowza genera las 4 calidades -->
+    <source src="http://192.168.1.14:1935/abr/smil:conejo.smil/playlist.m3u8"
+            type="application/x-mpegURL">
     <p class="vjs-no-js">Activa JavaScript y usa un navegador moderno.</p>
   </video>
 
-  <!-- Cada src va en UNA sola línea (en el PDF se parte para que quepa, tú no lo partas) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.0.7/dist/videojs-contrib-quality-levels.min.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@0.0.8/dist/videojs-hls-quality-selector.min.js"></script>
+  <script src="https://vjs.zencdn.net/7.21.0/video.js"></script>
+  <!-- Librerías que añaden el menú para elegir calidad (cada src en una sola línea) -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.0.7/dist/videojs-contrib-quality-levels.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@0.0.8/dist/videojs-hls-quality-selector.min.js"></script>
   <script>
-    var player = videojs('my-video');
-    // Activa el menú de calidades que añaden las dos librerías anteriores
+    // Crea el reproductor sobre el <video> de id "my-video"
+    videojs.options.vhs = { overrideNative: true };
+    var player = videojs('my-video', { html5: { vhs: { overrideNative: true }, nativeAudioTracks: false, nativeVideoTracks: false } });
+    // Activa el botón de selección de calidad
     player.hlsQualitySelector();
   </script>
 </body>
-
 </html>
