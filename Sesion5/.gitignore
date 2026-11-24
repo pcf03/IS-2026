@@ -2,3 +2,8 @@ html/video5/VideosHTML5/*.mp4
 html/video5/VideosHTML5/*.webm
 html/video5/VideosHTML5/*.ogv
 html/video5/VideosHTML5/*
+
+# Vídeos que usa Wowza (pesan mucho, se pueden volver a descargar)
+wowza/content/*.mp4
+wowza/content/*.zip
+wowza/content/*/
